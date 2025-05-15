@@ -8,20 +8,26 @@ export function Login() {
 
             <img src={Lapis} alt="Alguns Lápis de cor dentro de um copo preto" className={style.img_login} />
             <div className={style.back_the_login}>
+                <div className={style.text_title_log}>
+                    <h2>LOG-IN</h2>
+                </div>
+                <div className={style.two_inputs}>
+                    <div className={style.box_inputs}>
+                        <div className={style.form__group}>
+                            <input type="input" className={style.form__field} placeholder="Name" required=""></input>
+                            <label for="name" className={style.form__label}>Nome do Usuário</label>
+                        </div>
 
-                <h2>LOG-IN</h2>
-                <div>
-                    <div>
-                        <label for="nome">Nome do usuário:</label>
-                        <input type="text" id="nome" name="nome"></input>
                     </div>
-                    <div>
-                        <label for="nome">Senha:</label>
-                        <input type="text" id="nome" name="nome"></input>
+                    <div className={style.box_inputs}>
+                    <div className={style.form__group}>
+                            <input type="input" className={style.form__field} placeholder="Name" required=""></input>
+                            <label for="name" className={style.form__label}>Senha</label>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <button>
+                <div className={style.botao_conteiner}>
+                    <button className={style.botao_logar}>
                         Login
                     </button>
                 </div>
