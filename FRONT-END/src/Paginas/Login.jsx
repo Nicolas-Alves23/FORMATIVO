@@ -5,19 +5,20 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { data } from 'react-router-dom'
 
-const schemaLogin = z.object({
-    username: z.string()
-        .min(1, 'informe o seu usuário')
-        .max(30, 'informe no máximo 30 caracteres'),
 
-    password: z.string()
-        .min(1, 'informe o seu usuário')
-        .max(30, 'informe no máximo 30 caracteres'),
-})
 
 export function Login() {
+    const schemaLogin = z.object({
+        username: z.string()
+            .min(1, 'informe o seu usuário')
+            .max(30, 'informe no máximo 30 caracteres'),
+    
+        password: z.string()
+            .min(1, 'informe o seu usuário')
+            .max(30, 'informe no máximo 30 caracteres'),
+    })
+
     // registra todas as informações do usuário que são dadas
     const {
         register,
@@ -29,17 +30,16 @@ export function Login() {
     async function ObterDados(data) {
         console.log(`Dados ${data}`)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/login', {
+            const response = await axios.post('http://127.0.0.1:8000/api/login/', {
                 username: data.username,
                 password: data.password
             });
             const { access, refresh, user } = response.data
 
-            localStorage.setitem('access_token', access)
-            localStorage.setitem('refresh_token', refresh)
-            localStorage.setitem('tipo', user.tipo)
-            localStorage.setitem('username', username)
-
+            localStorage.setItem('access_token', access)
+            localStorage.setItem('refresh_token', refresh)
+            localStorage.setItem('tipo', user.tipo)
+            localStorage.setItem('username', user.username)
             console.log("Login efetuado")
         } catch (error) {
             console.error('deu ruim', error)
