@@ -5,20 +5,21 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router-dom'
 
 
+const schemaLogin = z.object({
+    username: z.string()
+        .min(1, 'informe o seu usuário')
+        .max(30, 'informe no máximo 30 caracteres'),
 
+    password: z.string()
+        .min(1, 'informe o seu usuário')
+        .max(30, 'informe no máximo 30 caracteres'),
+})
 export function Login() {
-    const schemaLogin = z.object({
-        username: z.string()
-            .min(1, 'informe o seu usuário')
-            .max(30, 'informe no máximo 30 caracteres'),
     
-        password: z.string()
-            .min(1, 'informe o seu usuário')
-            .max(30, 'informe no máximo 30 caracteres'),
-    })
-
+    const navigate = useNavigate()
     // registra todas as informações do usuário que são dadas
     const {
         register,
@@ -41,6 +42,7 @@ export function Login() {
             localStorage.setItem('tipo', user.tipo)
             localStorage.setItem('username', user.username)
             console.log("Login efetuado")
+            navigate('/inicial')
         } catch (error) {
             console.error('deu ruim', error)
             alert("dados inválida")
