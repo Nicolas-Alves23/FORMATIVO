@@ -1,7 +1,9 @@
 import style from './Login.module.css'
-import Lapis from '../imagem/Lapis.jpg'
-
+import Lapis from '../img/Lapis.jpg'
 import axios from 'axios'
+//A junção dessas 3 bibliotecas faz a validação
+//do formulario, eles são tipo uma venda casada,
+//um funciona baseado no outro
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'

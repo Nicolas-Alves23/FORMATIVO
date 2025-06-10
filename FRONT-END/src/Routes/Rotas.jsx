@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Login } from '../Paginas/Login';
-import { Inicial } from "../Paginas/Inicial";
-import {Envirouments} from "../Paginas/Envirouments"
-import { Subjects } from "../Paginas/Subjects";
+import { Login } from '../Pages/Login';
+import { Inicial } from "../Pages/Inicial";
+import {Envirouments} from "../Pages/Envirouments"
+import { Subjects } from "../Pages/Subjects";
 export function RoutesComp() {
     
     return (
