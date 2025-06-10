@@ -19,8 +19,8 @@ const schemaClassroom = z.object({
         .max(100, 'Informe ao menos um caractere'),
 });
 
-export function Classroom_editar(){
-    const[saça,setSala] = useState([]);
+export function Classroom_editar() {
+    const [saça, setSala] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -34,8 +34,8 @@ export function Classroom_editar(){
     });
 
     useEffect(() => {
-        async function buscarSala(){
-            try{
+        async function buscarSala() {
+            try {
                 const token = localStorage.getItem('access_token');
                 const response = await axios.get(`http://127.0.0.1:8000/api/sala_crud/${id}`, {
                     Headers: {
@@ -46,16 +46,16 @@ export function Classroom_editar(){
                 setSala(response.data);
                 reset(response.data);
 
-            } catch(error){
+            } catch (error) {
                 console.error("Erro ao carregar a sala", error);
             }
         }
         buscarSala();
     }, [id, reset]);
 
-    async function obterDadosFormulario(data){
+    async function obterDadosFormulario(data) {
         console.log("Dados do formulário: ", data);
-        try{
+        try {
             const token = localStorage.getItem('access_token');
 
             const response = await axios.put(
@@ -74,6 +74,40 @@ export function Classroom_editar(){
             reset();
             navigate('/home');
 
-        }catc
-    
+        } catch (error) {
+            console.error('Erro ao cadastrar sala', error);
+            alert("Erro ao cadastrar sala");
+        }
+
+    }
+    return (
+        <div className='container'>
+
+            <form onSubmit={handleSubmit(obterDadosFormulario)}>
+                <h2>Editar Sala</h2>
+                <label>Nome da sala</label>
+                <input
+                    {...register('nome')}
+                    placeholder="Sala"
+                />
+                {errors.nome && <p className={estilos.error}>{errors.nome.message}</p>}
+
+
+                <label >Capacidade de alunos</label>
+                <input
+                    type="number"
+                    {...register('capacidade_alunos', { valueAsNumber: true })}
+                    placeholder="Capacidade de Alunos"
+                />
+                {errors.curso && <p className={estilos.error}>{errors.capacidade_alunos.message}</p>}
+
+                <div>
+                    <button className={estilos.submitButton} type="submit">
+                        Cadastrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
 }
+    
