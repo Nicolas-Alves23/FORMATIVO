@@ -9,6 +9,13 @@ const schemasSala = z.object({
     nome: z.string()
         .min(1, 'Informe ao menos um caractere')
         .max(100, 'Informe até 100 caracteres'),
+
+
+    tamanho: z.number()
+        .int("Deve ser um número inteiro")
+        .min(1, 'Informe ao menos um caractere')
+        .max(100, 'Informe até 100 caracteres'),
+
     capacidade: z.number()
         .int("Deve ser um número inteiro")
         .min(1, 'Informe ao menos um caractere')
@@ -74,6 +81,14 @@ export function Classroom_Register() {
                         placeholder="Capacidade de Alunos"
                     />
                     {errors.capacidade && <p className='error'>{errors.capacidade.message}</p>}
+
+                    <label >Tamanho da sala</label>
+                    <input
+                        type="number"
+                        {...register("tamanho", { valueAsNumber: true })}
+                        placeholder="tamanho da sala"
+                    />
+                    {errors.tamanho && <p className='error'>{errors.tamanho.message}</p>}
                
                  <div>
                     <button type="submit">

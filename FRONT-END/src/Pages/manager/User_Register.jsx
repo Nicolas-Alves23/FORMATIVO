@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
- 
+
 const schemasSala = z.object({
     username: z.string()
         .min(1, 'Informe ao menos um caractere')
@@ -23,15 +23,21 @@ const schemasSala = z.object({
         .regex(/[a-z]/, 'Deve conter ao menos uma letra minúscula.')
         .regex(/[A-Z]/, 'Deve conter ao menos uma letra maiúscula.')
         .regex(/[0-9]/, 'Deve conter ao menos um número.')
-        .regex(/[^a-zA-Z0-9]/, 'Deve conter ao menos um caractere especial.'),        
+        .regex(/[^a-zA-Z0-9]/, 'Deve conter ao menos um caractere especial.'),
     tipo: z.string({
         invalid_type_error: 'Selecione um tipo'
-                            }).min(1, 'Selecione um tipo')
+    }).min(1, 'Selecione um tipo'),
+    
+    data_contratacao: z.string()
+        .refine(val => !isNaN(Date.parse(val)), { message: "Data de contratação inválida" }),
+
+    data_nascimento: z.string()
+        .refine(val => !isNaN(Date.parse(val)), { message: "Data de nascimento inválida" }),
 
 });
- 
+
 export function User_Register() {
- 
+
     const {
         register,
         handleSubmit,
@@ -40,14 +46,14 @@ export function User_Register() {
     } = useForm({
         resolver: zodResolver(schemasSala)
     });
- 
 
- 
+
+
     async function obterDadosFormulario(data) {
-      console.log("Dados do formulário:", data);
+        console.log("Dados do formulário:", data);
         try {
             const token = localStorage.getItem('access_token');
- 
+
             const response = await axios.post(
                 'http://127.0.0.1:8000/api/usuario/',
                 data,
@@ -58,43 +64,43 @@ export function User_Register() {
                     }
                 }
             );
- 
+
             console.log('usuário cadastrado com sucesso!', response.data);
             alert('usuário cadastrado com sucesso!');
             reset();
- 
+
         } catch (error) {
             console.error('Erro ao cadastrar usuário', error);
             alert("Erro ao cadastrar usuário");
         }
     }
- 
+
     return (
         <div className='container'>
-           
+
             <form onSubmit={handleSubmit(obterDadosFormulario)}>
-                    <h2>Criar Usuário</h2>
-                    <label>Username</label>
-                    <input
-                        {...register("username")}
-                        placeholder="Username"
-                    />
-                    {errors.nome && <p className='error'>{errors.nome.message}</p>}
-                
-                    <label >NI</label>
-                    <input
-                        type="number"
-                        {...register("ni", { valueAsNumber: true })}
-                        placeholder="ni"
-                    />
-                    {errors.ni && <p className='error'>{errors.ni.message}</p>}
-               
-                    <label >Email</label>
-                    <input
-                        {...register("email")}
-                        placeholder="email"
-                    />
-                    {errors.email && <p className='error'>{errors.email.message}</p>}
+                <h2>Criar Usuário</h2>
+                <label>Username</label>
+                <input
+                    {...register("username")}
+                    placeholder="Username"
+                />
+                {errors.username && <p className='error'>{errors.username.message}</p>}
+
+                <label >NI</label>
+                <input
+                    type="number"
+                    {...register("ni", { valueAsNumber: true })}
+                    placeholder="ni"
+                />
+                {errors.ni && <p className='error'>{errors.ni.message}</p>}
+
+                <label >Email</label>
+                <input
+                    {...register("email")}
+                    placeholder="email"
+                />
+                {errors.email && <p className='error'>{errors.email.message}</p>}
 
                 <label>Telefone</label>
                 <input
@@ -112,6 +118,20 @@ export function User_Register() {
                 />
                 {errors.password && <p className='error'>{errors.password.message}</p>}
 
+                <label>Data de contratação</label>
+                <input
+                    type="date"
+                    {...register("data_contratacao")}
+                />
+                {errors.data_contratacao && <p className="error">{errors.data_contratacao.message}</p>}
+
+                <label>Data de nascimento</label>
+                <input
+                    type="date"
+                    {...register("data_nascimento")}
+                />
+                {errors.data_nascimento && <p className="error">{errors.data_nascimento.message}</p>}
+
 
                 <label>Tipo de Usuário</label>
                 <select {...register("tipo")}>
@@ -121,7 +141,7 @@ export function User_Register() {
                 </select>
                 {errors.tipo && <p className='error'>{errors.tipo.message}</p>}
 
-                 <div>
+                <div>
                     <button type="submit">
                         Cadastrar
                     </button>
