@@ -1,18 +1,14 @@
-// import { BarraNavegacao } from './Componentes/BarraNavegacao'
-// import { Cabecalho } from './Componentes/Cabecalho'
-// import { Conteudo } from './Componentes/Conteudo'
-import { Login } from './Pages/Login'
-// import { Bottun_ambientes } from './Componentes/Buttons/Bottun_ambientes'
+import { Rotas } from "./Routes/Rotas";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
 
   return (
-    // <>
-    //   <BarraNavegacao/>
-    //   <Cabecalho/>
-    //   <Conteudo/>
-    // </>
-    <Login/>
+    <>
+      <BrowserRouter>
+        <Rotas />
+      </BrowserRouter>
+    </>
   )
 
 }

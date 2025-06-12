@@ -44,7 +44,7 @@ export function Login() {
             localStorage.setItem('tipo', user.tipo)
             localStorage.setItem('username', user.username)
             console.log("Login efetuado")
-            navigate('/inicial')
+            navigate('/home')
         } catch (error) {
             console.error('deu ruim', error)
             alert("dados inválida")
