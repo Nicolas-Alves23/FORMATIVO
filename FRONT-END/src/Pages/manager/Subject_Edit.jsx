@@ -55,10 +55,10 @@ export function Subject_Edit() {
                 console.log(response.data)
                 console.log("Token:", token);
                 console.log("ID da disciplina:", id);
-                console.log("URL da requisição:", `http://127.0.0.1:8000/api/disciplina/${id}`);
+                console.log("URL da requisição:", `http://127.0.0.1:8000/api/disciplina/${id}/`);
                 
                 //Preenche o formulários com os dados do registro do ID
-                const resDisciplina = await axios.get(`http://127.0.0.1:8000/api/disciplina/${id}`, {
+                const resDisciplina = await axios.get(`http://127.0.0.1:8000/api/disciplina/${id}/`, {
                     headers: { 'Authorization' : `Bearer ${token}`,
                     'Accept': 'application/json'
                 }
@@ -81,7 +81,7 @@ export function Subject_Edit() {
             const token = localStorage.getItem('access_token');
  
             const response = await axios.put(
-                `http://127.0.0.1:8000/api/disciplina/${id}`,
+                `http://127.0.0.1:8000/api/disciplina/${id}/`,
                 data,
                 {
                     headers: {
@@ -129,7 +129,7 @@ export function Subject_Edit() {
                     <input
                      type="number"
    
-                        {...register('cargaHorario', { valueAsNumber: true })}
+                        {...register('carga_horario', { valueAsNumber: true })}
                         placeholder="100"
                     />
                     {errors.carga_horario &&

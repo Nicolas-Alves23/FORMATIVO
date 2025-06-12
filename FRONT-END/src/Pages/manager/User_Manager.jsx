@@ -32,7 +32,7 @@ export function User_Manager() {
 
     const token = localStorage.getItem('access_token');
 
-    axios.delete(`http://127.0.0.1:8000/api/usuario/${id}`, {
+    axios.delete(`http://127.0.0.1:8000/api/usuario/${id}/`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

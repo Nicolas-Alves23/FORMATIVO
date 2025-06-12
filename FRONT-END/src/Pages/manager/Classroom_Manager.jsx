@@ -32,7 +32,7 @@ export function Classroom_Manager() {
 
     const token = localStorage.getItem('access_token');
 
-    axios.delete(`http://127.0.0.1:8000/api/sala/${id}`, {
+    axios.delete(`http://127.0.0.1:8000/api/sala/${id}/`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

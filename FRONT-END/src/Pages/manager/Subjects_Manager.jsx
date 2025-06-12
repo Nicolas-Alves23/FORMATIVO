@@ -33,7 +33,7 @@ export function Subjects_Manager() {
 
     const token = localStorage.getItem('access_token');
 
-    axios.delete(`http://127.0.0.1:8000/api/disciplina/${id}`, {
+    axios.delete(`http://127.0.0.1:8000/api/disciplina/${id}/`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -74,7 +74,7 @@ export function Subjects_Manager() {
                 <td>{disciplina.nome}</td>
                 <td>{disciplina.curso}</td>
                 <td>{disciplina.descricao}</td>
-                <th>{disciplina.professor_name}</th>
+                <th>{disciplina.professor}</th>
                 <td>{disciplina.carga_horario}</td>
               <td>
                   <Link to={`/gestor/disciplina/editar/${disciplina.id}`}>

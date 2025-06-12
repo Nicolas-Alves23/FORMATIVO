@@ -35,7 +35,7 @@ export function Classroom_edit() {
         async function buscarSala() {
             try {
                 const token = localStorage.getItem('access_token');
-                const response = await axios.get(`http://127.0.0.1:8000/api/sala/${id}`, {
+                const response = await axios.get(`http://127.0.0.1:8000/api/sala/${id}/`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -58,7 +58,7 @@ export function Classroom_edit() {
             const token = localStorage.getItem('access_token');
  
             const response = await axios.put(
-                `http://127.0.0.1:8000/api/sala/${id}`,
+                `http://127.0.0.1:8000/api/sala/${id}/`,
                 data,
                 {
                     headers: {
