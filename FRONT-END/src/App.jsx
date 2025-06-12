@@ -1,8 +1,8 @@
-import { BarraNavegacao } from './Componentes/BarraNavegacao'
-import { Cabecalho } from './Componentes/Cabecalho'
-import { Conteudo } from './Componentes/Conteudo'
-import { Login } from './Paginas/Login'
-import { Bottun_ambientes } from './Componentes/Buttons/Bottun_ambientes'
+// import { BarraNavegacao } from './Componentes/BarraNavegacao'
+// import { Cabecalho } from './Componentes/Cabecalho'
+// import { Conteudo } from './Componentes/Conteudo'
+import { Login } from './Pages/Login'
+// import { Bottun_ambientes } from './Componentes/Buttons/Bottun_ambientes'
 
 function App() {
 
