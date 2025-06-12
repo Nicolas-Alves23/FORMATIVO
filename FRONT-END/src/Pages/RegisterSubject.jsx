@@ -11,7 +11,7 @@ const schemaDisciplinas = z.object({
         .max(100, "Maximo 100 caracteres"),
     curso: z.string()
         .min(255, "Informe no maximo 255 caracteres"),
-    cargaHoraria: z.number(
+    carga_horario: z.number(
         {invalid_type_error: "Informe uma carga horaria"})
         .int("Digite um valor inteiro")
         .min(1, "informe um valor")
@@ -40,7 +40,7 @@ export function RegisterSubject(){
 
         async function buscarProfessores() {
             try{
-                const token = localStorage.getItem('acess_token');
+                const token = localStorage.getItem('access_token');
                 const response = await axios.get('http:/127.0.0.1:8000/api/usuario/', {
                     headers:{
                         "Authorization": `Bearer ${token}`

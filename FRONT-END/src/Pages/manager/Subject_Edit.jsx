@@ -53,18 +53,24 @@ export function Subject_Edit() {
                 });
                 setProfessores(response.data);
                 console.log(response.data)
+                console.log("Token:", token);
+                console.log("ID da disciplina:", id);
+                console.log("URL da requisição:", `http://127.0.0.1:8000/api/disciplina/${id}`);
                 
                 //Preenche o formulários com os dados do registro do ID
-                 const resDisciplina = await axios.get(`http://127.0.0.1:8000/api/disciplina/${id}`, {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
- 
+                const resDisciplina = await axios.get(`http://127.0.0.1:8000/api/disciplina/${id}`, {
+                    headers: { 'Authorization' : `Bearer ${token}`,
+                    'Accept': 'application/json'
+                }
+            });
+                console.log("Segunda etapa feita")
                 // Preenche o formulário
                 reset(resDisciplina.data);
  
             } catch (error) {
                 console.error("Erro ao carregar professores", error);
             }
+
         }
         buscarProfessores();
     }, []);
@@ -126,9 +132,9 @@ export function Subject_Edit() {
                         {...register('cargaHorario', { valueAsNumber: true })}
                         placeholder="100"
                     />
-                    {errors.cargaHorario &&
+                    {errors.carga_horario &&
                     <p>
-                        {errors.cargaHorario.message}
+                        {errors.carga_horario.message}
                     </p>}
                
  

@@ -95,10 +95,10 @@ export function Classroom_edit() {
                     <label >Capacidade de alunos</label>
                     <input
                         type="number"
-                        {...register('capacidade_alunos', { valueAsNumber: true })}
+                        {...register('capacidade', { valueAsNumber: true })}
                         placeholder="Capacidade de Alunos"
                     />
-                    {errors.curso && <p className={style.error}>{errors.capacidade_alunos.message}</p>}
+                    {errors.curso && <p className={style.error}>{errors.capacidade.message}</p>}
                
                  <div>
                     <button className={style.submitButton} type="submit">

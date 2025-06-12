@@ -13,13 +13,13 @@
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(1, 93, 105, 0.25);
+    box-shadow: 0 12px 30px rgba(105, 1, 1, 0.25);
 }
 
 .title {
     font-size: 1.75rem;
     margin-bottom: 0.75rem;
-    color: #00BFB3;
+    color: #bf0000;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -31,7 +31,7 @@
 }
 
 .card p strong {
-    color: #00807c;
+    color: #800000;
 }
 
 .acoes{
