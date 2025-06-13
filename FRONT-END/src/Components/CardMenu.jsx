@@ -1,4 +1,3 @@
-
 import styles from "./CardMenu.module.css";
 
 //This component makes an card that acepet as paramters an icon and label

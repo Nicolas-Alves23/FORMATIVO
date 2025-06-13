@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 
 export function Menu() {
-const username = localStorage.getItem("username");
+    const username = localStorage.getItem("username");
     const tipo = localStorage.getItem("tipo");
 
     // Define rotas com base no tipo do usuário
@@ -13,36 +13,57 @@ const username = localStorage.getItem("username");
     const link_ambientes = tipo === 'P' ? '/a' : '/gestor/reserva';
     const link_usuarios = tipo == 'P' ? '/a' : '/gestor/usuario';
     const link_salas = tipo === 'P' ? '/salas' : '/gestor/sala';
- 
+
     return (
-        <div className={styles.container}>
-            <h1 className={styles.nome}>Olá {username}</h1><br />
-            <div className={styles.containerCard}>
+        <main>
+            <article>
+                <section>
+                    <div>
+                        <h1>Futuro da sua instituição</h1>
+                        <p>Organização de tudo somente em um site, faça acontecer conosco organizando</p>
+                    </div>
+                    <div>
+                        <figure>
+                            <img src="" alt="" />
+                        </figure>
+                    </div>
+                </section>
+            </article>
 
-                <Link to={link_disciplinas}>
-                    <CardMenu icon={FaBookOpen} label="Disciplinas" />
-                </Link>
 
-                <Link to={link_ambientes}>
-                    <CardMenu icon={FaSchool} label="Ambientes" />
-                </Link>
 
-                {/* Só exibe Professores e Gestores se tipo for 'G' */}
-                {tipo === 'G' && (
-                    <>
-                        <Link to={link_usuarios}>
-                            <CardMenu icon={FaChalkboardTeacher} label="Professores" />
-                        </Link>
-                        <Link to="http://127.0.0.1:8000/admin/">
-                            <CardMenu icon={FaUserTie} label="Administrador" />
-                        </Link>
-                    </>
-                )}
 
-                <Link to={link_salas}>
-                    <CardMenu icon={FaDoorClosed} label="Salas" />
-                </Link>
+
+
+            <div className={styles.container}>
+                <h1 className={styles.nome}>Olá {username}</h1><br />
+                <div className={styles.containerCard}>
+
+                    <Link to={link_disciplinas}>
+                        <CardMenu icon={FaBookOpen} label="Disciplinas" />
+                    </Link>
+
+                    <Link to={link_ambientes}>
+                        <CardMenu icon={FaSchool} label="Ambientes" />
+                    </Link>
+
+                    {/* Só exibe Professores e Gestores se tipo for 'G' */}
+                    {tipo === 'G' && (
+                        <>
+                            <Link to={link_usuarios}>
+                                <CardMenu icon={FaChalkboardTeacher} label="Professores" />
+                            </Link>
+                            <Link to="http://127.0.0.1:8000/admin/">
+                                <CardMenu icon={FaUserTie} label="Administrador" />
+                            </Link>
+                        </>
+                    )}
+
+                    <Link to={link_salas}>
+                        <CardMenu icon={FaDoorClosed} label="Salas" />
+                    </Link>
+                </div>
             </div>
-        </div>
+        </main>
     );
 }

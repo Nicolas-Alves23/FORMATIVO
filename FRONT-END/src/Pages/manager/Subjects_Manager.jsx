@@ -7,7 +7,6 @@ import { FiPlus, FiEdit, FiTrash } from 'react-icons/fi';
 
 export function Subjects_Manager() {
   const [disciplinas, setDisciplinas] = useState([]);
-  const [professores, setProfessores] = useState({});
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');

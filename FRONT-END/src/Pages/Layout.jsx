@@ -5,7 +5,6 @@ import { Footer } from "../components/Footer";
 export function Layout() {
     return (
         <>
-        <Header/>
         <Outlet/>
         <Footer/>
         </>

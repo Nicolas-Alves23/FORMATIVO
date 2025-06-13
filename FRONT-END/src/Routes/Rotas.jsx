@@ -19,6 +19,8 @@ import { Subjects_Manager} from "../Pages/manager/Subjects_Manager";
 import { Subject_Edit } from "../Pages/manager/Subject_Edit";
 import { Subject_Register } from "../Pages/manager/Subject_Register";
 
+import { Enviroument_Manager } from "../Pages/manager/Enviroment_Manager";
+
 
 export function Rotas() {
     
@@ -41,6 +43,8 @@ export function Rotas() {
                 <Route path='/gestor/usuario' element={<User_Manager/>}/>
                 <Route path="/gestor/usuario/register/" element={<User_Register/>}/>
                 <Route path="/gestor/usuario/editar/:id" element={<User_Edit/>}/>
+
+                <Route path='/gestor/reserva' element={<Enviroument_Manager/>}/>
             </Route>
         </Routes>
     );
